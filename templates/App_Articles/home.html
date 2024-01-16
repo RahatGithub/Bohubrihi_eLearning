@@ -1,0 +1,26 @@
+{% extends 'navbar.html' %}
+{% block title_block %}{{title}}{% endblock %}
+
+{% block body_block %}
+
+<div class="row row-cols-3 my-2">
+    {% for article in articles %} 
+    <div class="col-3 mx-2" style="width: 18rem; min-height: 30rem;">
+        <img src="/media/{{article.image}}" class="card-img-top h-50" alt="...">
+        <div class="" style="height: 10rem;">
+            <h5 class="">{{article.caption}}</h5>
+            <p class="">{{ article.description|slice:":100"}}...</p>
+        </div>
+        <a href="#" class="btn btn-outline-primary">Read</a>
+    </div>
+    {% endfor %}
+</div>
+
+{% if request.user.user_profile.type == 'Teacher' %}
+    <a href="{% url 'App_Articles:new_article' %}" class="btn btn-primary">New article</a>
+{% else %}
+    <h2>Student</h2>
+{% endif %}
+
+
+{% endblock %}

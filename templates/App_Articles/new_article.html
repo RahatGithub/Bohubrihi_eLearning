@@ -1,0 +1,14 @@
+{% extends 'navbar.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block body_block %}
+    <div class="container">
+        <h3>Write your article</h3>
+        <form method="post" enctype="multipart/form-data" class="bg-light border rounded p-3 my-3">
+            {% csrf_token %}
+            {{form|crispy}}
+            <button type="submit" style="width:10%;" class="btn btn-primary"> Post </button> 
+        </form> 
+    </div>
+{% endblock %}

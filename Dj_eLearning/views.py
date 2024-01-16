@@ -2,4 +2,4 @@ from django.shortcuts import render, HttpResponseRedirect, HttpResponse
 
 
 def home(request):
-    return HttpResponse("Universal home page")
+    return render(request, 'home.html')
