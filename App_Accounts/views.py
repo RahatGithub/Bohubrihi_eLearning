@@ -20,7 +20,9 @@ def sign_up(request):
             profile_pic = form.cleaned_data['profile_pic']
             user_profile = UserProfile(user=user, type=type, profile_pic=profile_pic)
             user_profile.save()
-            return HttpResponseRedirect(reverse('App_Accounts:log_in'))
+            login(request, user) 
+            # return HttpResponseRedirect(reverse('App_Accounts:log_in'))
+            return HttpResponseRedirect(reverse('home'))
     
     return render(request, 'App_Accounts/signup.html', 
                   context={
@@ -38,8 +40,8 @@ def log_in(request):
             user = authenticate(username=username, password=password)
             if user is not None: 
                 login(request, user)
-                # return HttpResponseRedirect(reverse(''))
-                return render(request, 'home.html') 
+                return HttpResponseRedirect(reverse('home'))
+                # return render(request, 'home.html') 
     
     return render(request, 'App_Accounts/login.html', context={'title':'Login', 'form':form})
 

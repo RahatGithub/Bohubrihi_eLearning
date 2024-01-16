@@ -1,0 +1,15 @@
+{% extends 'navbar.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block body_block %}
+    <div class="container">
+        <h3>Create new forum</h3>
+        <h6 class="text-danger">*Check if there is already a forum in this topic</h6>
+        <form method="post" class="bg-light border rounded p-3 my-3">
+            {% csrf_token %}
+            {{form|crispy}}
+            <button type="submit" style="width:10%;" class="btn btn-primary">Create</button> 
+        </form> 
+    </div>
+{% endblock %}

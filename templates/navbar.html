@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title_block %}Social{% endblock %}</title>
+    <title>{% block title_block %}eLearning{% endblock %}</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
@@ -37,12 +37,10 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'App_Quizes:home' %}">Quizes <span class="sr-only">(current)</span></a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'App_Forums:home' %}">Forums <span class="sr-only">(current)</span></a>
+            </li>
             &nbsp; &nbsp; &nbsp; &nbsp;
-            <!-- Search form -->
-            <form class="form-inline" method="GET">
-              <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search">
-              <button class="btn btn-success" type="submit">Search</button>
-            </form>
             <li class="nav-item d-flex align-items-center">
               <a class="nav-link" href="{% url 'App_Accounts:logout' %}"><span class="text-danger">Log out</span> <span class="sr-only">(current)</span></a>
             </li>
@@ -55,7 +53,7 @@
                 {% endif %}
               </div>
               <div class="col d-flex justify-content-center align-items-center">
-                <h6>{{request.user}}</h6>
+                <h6>{{request.user}} ({{request.user.user_profile.type}})</h6>
               </div>
             </li>
           </ul>

@@ -1,0 +1,27 @@
+{% extends 'navbar.html' %}
+{% block title_block %}{{title}}{% endblock %}
+
+{% block body_block %}
+
+{% if request.user.user_profile.type == 'Student' %}
+    <div class="my-3 mx-2">
+        <a href="{% url 'App_Forums:new_forum' %}" class="btn btn-primary">Open new forum</a>
+    </div>
+{% endif %}
+
+{% for forum in forums %}
+    <div class="bg-secondary text-white my-2 p-5 rounded">
+        <div class="row">
+            <div class="col-6">
+                <h2>{{forum.topic}}</h2>
+                <h6>Creator: {{forum.creator}}</h6>
+                <h6>Created on: {{forum.created_date}}</h6>
+            </div>
+            <div class="col-6">
+                <a href="{% url 'App_Forums:forum_view' id=forum.id %}" class="btn btn-primary">View</a>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock %}

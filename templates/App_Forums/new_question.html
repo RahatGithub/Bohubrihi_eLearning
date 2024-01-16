@@ -1,0 +1,15 @@
+{% extends 'navbar.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block body_block %}
+    <div class="container">
+        <h4 class="text-primary">> {{forum.topic}}</h4>
+        <h3>Ask a question</h3>
+        <form method="post" enctype="multipart/form-data" class="bg-light border rounded p-3 my-3">
+            {% csrf_token %}
+            {{form|crispy}}
+            <button type="submit" style="width:10%;" class="btn btn-primary">Send</button> 
+        </form> 
+    </div>
+{% endblock %}

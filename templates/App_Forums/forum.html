@@ -1,0 +1,29 @@
+{% extends 'navbar.html' %}
+{% block title_block %}{{title}}{% endblock %}
+
+{% block body_block %}
+
+{% if request.user.user_profile.type == 'Student' %}
+    <div class="my-3 mx-2">
+        <a href="{% url 'App_Forums:new_question' id=forum.id %}" class="btn btn-primary">Ask a question</a>
+    </div>
+{% endif %}
+
+{% for question in questions %}
+    <div class="bg-secondary text-white my-4 p-4 rounded">
+        <div class="">
+            <h6>Asked by: {{question.asked_by}}</h6>
+            <h2>{{question.question}}</h2>
+            <h6>Created on: {{question.created_date}}</h6>
+            {% if question.image %}
+                <div class="d-flex justify-content-center">
+                    <img src="/media/{{question.image}}" height="400px" alt="...">
+                </div>    
+            {% endif %}
+            <a href="{% url 'App_Forums:question_view' id=question.id %}" class="btn btn-primary">View</a>
+        </div>
+    </div>
+{% endfor %}
+
+
+{% endblock %}

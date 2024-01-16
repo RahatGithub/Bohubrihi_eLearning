@@ -1,0 +1,46 @@
+{% extends 'navbar.html' %}
+{% load crispy_forms_tags %}
+{% block title_block %}{{title}}{% endblock %}
+
+{% block body_block %}
+
+
+<div class="bg-secondary text-white my-4 p-4 rounded">
+    <div class="">
+        <h6>Asked by: {{question.asked_by}}</h6>
+        <h2>{{question.question}}</h2>
+        <h6>Created on: {{question.created_date}}</h6>
+        {% if question.image %}
+            <div class="d-flex justify-content-center">
+                <img src="/media/{{question.image}}" height="400px" alt="...">
+            </div>    
+        {% endif %}
+    </div>
+</div>
+
+<div>
+    <form method='POST'>
+        {{form|crispy}}
+        {% csrf_token %}
+        <button type="submit" style="width:10%;" class="btn btn-primary"> Send </button> 
+    </form>
+</div>
+
+{% for answer in answers %}
+    <div class="bg-light border rounded my-3 p-3 row">
+        <div class="col-2 d-flex justify-content-around"> 
+            {% if answer.answered_by.user_profile.profile_pic %}
+                <img src="/media/{{answer.answered_by.user_profile.profile_pic}}" height="30px" alt="..."> 
+            {% else %}
+                <img src="/media/profile_pics/default_user.png" height="30px" alt="..."> 
+            {% endif %}
+            <h6 class="text-primary">{{answer.answered_by}}</h6>
+        </div>
+        <div class="col-10">
+            <p>{{answer.answer}}</p>
+        </div>
+    </div>
+{% endfor %}
+
+
+{% endblock %}

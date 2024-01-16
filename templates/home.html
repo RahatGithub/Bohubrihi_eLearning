@@ -2,6 +2,12 @@
 
 {% block body_block %}
 
-    <h1>Universal home</h1>
+
+<a href="{% url 'App_Articles:home' %}" class="btn btn-primary w-25">Articles <span class="badge badge-light">{{num_of_articles}}</span></a>
+
+<a href="{% url 'App_Quizes:home' %}" class="btn btn-danger w-25">Quizes <span class="badge badge-light">{{num_of_quizes}}</span></a>
+
+<a href="{% url 'App_Forums:home' %}" class="btn btn-info w-25">Forums <span class="badge badge-light">{{num_of_forums}}</span></a>
+
 
 {% endblock %}
