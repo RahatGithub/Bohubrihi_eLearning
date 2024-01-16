@@ -1,0 +1,25 @@
+{% extends 'navbar.html' %}
+{% block title_block %}{{title}}{% endblock %}
+
+{% block body_block %}
+
+{% if request.user.user_profile.type == 'Teacher' %}
+    <div class="my-3 mx-2">
+        <a href="{% url 'App_Quizes:new_quiz' %}" class="btn btn-primary">Give new quiz</a>
+    </div>
+{% endif %}
+
+<div class="row row-cols-3 my-2">
+    {% for quiz in quizes %} 
+    <div class="col-3 mx-2" style="width: 18rem; min-height: 20rem;">
+        <h5 class="text-primary">{{quiz.subject}}</h5>
+        <h4 class="">{{quiz.title}}</h4>
+        <p class="">Marks: {{quiz.marks}}</p>
+        <p class="">Teacher: {{quiz.teacher}}</p>
+        <a href="{% url 'App_Quizes:quiz_view' id=quiz.id %}" class="btn btn-outline-primary">View</a>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'navbar.html' %} 
+
+
+
+{% block body_block %}
+
+<div class="jumbotron">
+    <h1 class="display-4">{{article.caption}}!</h1>
+    <div class="d-flex justify-content-center bg-light my-2">
+        <img src="/media/{{article.image}}" alt="..." width="500px">
+    </div>
+    <p class="lead">{{article.description}}</p>
+    <h5>- {{article.author}}</h5>
+  </div>
+
+{% endblock %}

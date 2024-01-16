@@ -3,24 +3,25 @@
 
 {% block body_block %}
 
+{% if request.user.user_profile.type == 'Teacher' %}
+    <div class="my-3 mx-2">
+        <a href="{% url 'App_Articles:new_article' %}" class="btn btn-primary">Write new article</a>
+    </div>
+{% endif %}
+
 <div class="row row-cols-3 my-2">
     {% for article in articles %} 
     <div class="col-3 mx-2" style="width: 18rem; min-height: 30rem;">
         <img src="/media/{{article.image}}" class="card-img-top h-50" alt="...">
-        <div class="" style="height: 10rem;">
+        <div class="" style="height: 12rem;">
             <h5 class="">{{article.caption}}</h5>
             <p class="">{{ article.description|slice:":100"}}...</p>
+            <h6 class="">Author: {{article.author}}</h6>
         </div>
-        <a href="#" class="btn btn-outline-primary">Read</a>
+        <a href="{% url 'App_Articles:article_view' id=article.id %}" class="btn btn-outline-primary">Read</a>
     </div>
     {% endfor %}
 </div>
-
-{% if request.user.user_profile.type == 'Teacher' %}
-    <a href="{% url 'App_Articles:new_article' %}" class="btn btn-primary">New article</a>
-{% else %}
-    <h2>Student</h2>
-{% endif %}
 
 
 {% endblock %}

@@ -6,4 +6,5 @@ app_name = "App_Articles"
 urlpatterns = [
     path('home/', views.home, name="home"),
     path('new_article/', views.new_article, name="new_article"),
+    path('articles/<int:id>', views.article_view, name="article_view")
 ]

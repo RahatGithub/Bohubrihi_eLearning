@@ -1,0 +1,17 @@
+{% extends 'navbar.html' %} 
+
+
+
+{% block body_block %}
+
+<div class="jumbotron">
+    <h4 class="text-primary">> {{quiz.subject}}</h4>
+    <h1 class="display-4">{{quiz.title}}</h1>
+    <h6>Teacher: {{quiz.teacher}}</h6>
+    <h6>Marks: {{quiz.marks}}</h6>
+    <div class="d-flex justify-content-center bg-light my-2 p-3">
+        <p class="lead">{{quiz.questions|linebreaks}}</p>
+    </div>
+  </div>
+
+{% endblock %}

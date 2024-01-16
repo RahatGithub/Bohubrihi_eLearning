@@ -25,7 +25,7 @@ urlpatterns = [
     path('', views.home, name="home"),
     path('accounts/', include('App_Accounts.urls')),
     path('articles/', include('App_Articles.urls')),
-    # path('quizes/', include('App_Quizes.urls')),
+    path('quizes/', include('App_Quizes.urls')),
     # path('forums/', include('App_Forums.urls')),
 ]
 
